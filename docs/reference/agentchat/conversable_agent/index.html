@@ -10,7 +10,7 @@
 
 
 <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/katex@0.13.11/dist/katex.min.css" integrity="sha384-Um5gpz1odJg5Z4HAmzPtgZKdTBHZdw8S29IecapCSB31ligYPhHQZMIlWLYQGVoc" crossorigin="anonymous"><link rel="stylesheet" href="/autogen/assets/css/styles.58d734fe.css">
-<script src="/autogen/assets/js/runtime~main.6ebaec51.js" defer="defer"></script>
+<script src="/autogen/assets/js/runtime~main.babe9265.js" defer="defer"></script>
 <script src="/autogen/assets/js/main.bd4cac7a.js" defer="defer"></script>
 </head>
 <body class="navigation-with-keyboard">
@@ -592,13 +592,14 @@ for the initial decorator, but the following ones can omit it.</p>
 <li><code>api_style</code> - (literal): the API style for function call.
 For Azure OpenAI API, use version 2023-12-01-preview or later.
 <code>&quot;function&quot;</code> style will be deprecated. For earlier version use
-<code>&quot;function&quot;</code> if <code>&quot;tool&quot;</code> doesn&#x27;t work.</li>
+<code>&quot;function&quot;</code> if <code>&quot;tool&quot;</code> doesn&#x27;t work.
+See <a href="https://learn.microsoft.com/en-us/azure/ai-services/openai/how-to/function-calling?tabs=python" target="_blank" rel="noopener noreferrer">Azure OpenAI documentation</a> for details.</li>
 </ul>
 <p><strong>Returns</strong>:</p>
 <p>The decorator for registering a function to be used by an agent.</p>
 <p><strong>Examples</strong>:</p>
 <div class="codeBlockContainer_Ckt0 theme-code-block" style="--prism-color:#bfc7d5;--prism-background-color:#292d3e"><div class="codeBlockContent_biex"><pre tabindex="0" class="prism-code language-text codeBlock_bY9V thin-scrollbar" style="color:#bfc7d5;background-color:#292d3e"><code class="codeBlockLines_e6Vv"><span class="token-line" style="color:#bfc7d5"><span class="token plain">```</span><br></span><span class="token-line" style="color:#bfc7d5"><span class="token plain">@user_proxy.register_for_execution()</span><br></span><span class="token-line" style="color:#bfc7d5"><span class="token plain">@agent2.register_for_llm()</span><br></span><span class="token-line" style="color:#bfc7d5"><span class="token plain">@agent1.register_for_llm(description=&quot;This is a very useful function&quot;)</span><br></span><span class="token-line" style="color:#bfc7d5"><span class="token plain">def my_function(a: Annotated[str, &quot;description of a parameter&quot;] = &quot;a&quot;, b: int, c=3.14) -&gt; str:</span><br></span><span class="token-line" style="color:#bfc7d5"><span class="token plain">     return a + str(b * c)</span><br></span><span class="token-line" style="color:#bfc7d5"><span class="token plain">```</span><br></span></code></pre><div class="buttonGroup__atx"><button type="button" aria-label="Copy code to clipboard" title="Copy" class="clean-btn"><span class="copyButtonIcons_eSgA" aria-hidden="true"><svg viewBox="0 0 24 24" class="copyButtonIcon_y97N"><path fill="currentColor" d="M19,21H8V7H19M19,5H8A2,2 0 0,0 6,7V21A2,2 0 0,0 8,23H19A2,2 0 0,0 21,21V7A2,2 0 0,0 19,5M16,1H4A2,2 0 0,0 2,3V17H4V3H16V1Z"></path></svg><svg viewBox="0 0 24 24" class="copyButtonSuccessIcon_LjdS"><path fill="currentColor" d="M21,7L9,19L3.5,13.5L4.91,12.09L9,16.17L19.59,5.59L21,7Z"></path></svg></span></button></div></div></div>
-<p>For Azure OpenAI versions 2023-10-01-preview and earlier, set <code>api_style</code>
+<p>For Azure OpenAI versions prior to 2023-12-01-preview, set <code>api_style</code>
 to <code>&quot;function&quot;</code> if <code>&quot;tool&quot;</code> doesn&#x27;t work:
 <code>    @agent2.register_for_llm(api_style=&quot;function&quot;)     def my_function(a: Annotated[str, &quot;description of a parameter&quot;] = &quot;a&quot;, b: int, c=3.14) -&gt; str:          return a + str(b * c)    </code></p>
 <h4 class="anchor anchorWithStickyNavbar_LWe7" id="register_for_execution">register_for_execution<a href="#register_for_execution" class="hash-link" aria-label="Direct link to register_for_execution" title="Direct link to register_for_execution">​</a></h4>
