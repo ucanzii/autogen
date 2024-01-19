@@ -11,7 +11,7 @@
 
 <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/katex@0.13.11/dist/katex.min.css" integrity="sha384-Um5gpz1odJg5Z4HAmzPtgZKdTBHZdw8S29IecapCSB31ligYPhHQZMIlWLYQGVoc" crossorigin="anonymous">
 <script src="/autogen/js/custom.js" async defer="defer"></script><link rel="stylesheet" href="/autogen/assets/css/styles.efe9b9c9.css">
-<script src="/autogen/assets/js/runtime~main.7b9edeb1.js" defer="defer"></script>
+<script src="/autogen/assets/js/runtime~main.cadf3c3b.js" defer="defer"></script>
 <script src="/autogen/assets/js/main.7ee3d38f.js" defer="defer"></script>
 </head>
 <body class="navigation-with-keyboard">
@@ -295,7 +295,8 @@ If <code>clear_history</code> is True, the chat history with the recipient agent
 <li><code>clear_history</code> <em>bool</em> - whether to clear the chat history with the agent.</li>
 <li><code>silent</code> <em>bool or None</em> - (Experimental) whether to print the messages for this conversation.</li>
 <li><code>**context</code> - any context information.
-&quot;message&quot; needs to be provided if the <code>generate_init_message</code> method is not overridden.</li>
+&quot;message&quot; needs to be provided if the <code>generate_init_message</code> method is not overridden.
+Otherwise, input() will be called to get the initial message.</li>
 </ul>
 <p><strong>Raises</strong>:</p>
 <ul>
@@ -313,7 +314,8 @@ If <code>clear_history</code> is True, the chat history with the recipient agent
 <li><code>clear_history</code> <em>bool</em> - whether to clear the chat history with the agent.</li>
 <li><code>silent</code> <em>bool or None</em> - (Experimental) whether to print the messages for this conversation.</li>
 <li><code>**context</code> - any context information.
-&quot;message&quot; needs to be provided if the <code>generate_init_message</code> method is not overridden.</li>
+&quot;message&quot; needs to be provided if the <code>generate_init_message</code> method is not overridden.
+Otherwise, input() will be called to get the initial message.</li>
 </ul>
 <h4 class="anchor anchorWithStickyNavbar_LWe7" id="reset">reset<a href="#reset" class="hash-link" aria-label="Direct link to reset" title="Direct link to reset">​</a></h4>
 <div class="language-python codeBlockContainer_Ckt0 theme-code-block" style="--prism-color:#bfc7d5;--prism-background-color:#292d3e"><div class="codeBlockContent_biex"><pre tabindex="0" class="prism-code language-python codeBlock_bY9V thin-scrollbar" style="color:#bfc7d5;background-color:#292d3e"><code class="codeBlockLines_e6Vv"><span class="token-line" style="color:#bfc7d5"><span class="token keyword" style="font-style:italic">def</span><span class="token plain"> </span><span class="token function" style="color:rgb(130, 170, 255)">reset</span><span class="token punctuation" style="color:rgb(199, 146, 234)">(</span><span class="token punctuation" style="color:rgb(199, 146, 234)">)</span><br></span></code></pre><div class="buttonGroup__atx"><button type="button" aria-label="Copy code to clipboard" title="Copy" class="clean-btn"><span class="copyButtonIcons_eSgA" aria-hidden="true"><svg viewBox="0 0 24 24" class="copyButtonIcon_y97N"><path fill="currentColor" d="M19,21H8V7H19M19,5H8A2,2 0 0,0 6,7V21A2,2 0 0,0 8,23H19A2,2 0 0,0 21,21V7A2,2 0 0,0 19,5M16,1H4A2,2 0 0,0 2,3V17H4V3H16V1Z"></path></svg><svg viewBox="0 0 24 24" class="copyButtonSuccessIcon_LjdS"><path fill="currentColor" d="M21,7L9,19L3.5,13.5L4.91,12.09L9,16.17L19.59,5.59L21,7Z"></path></svg></span></button></div></div></div>
@@ -540,7 +542,18 @@ See <a href="https://platform.openai.com/docs/api-reference/chat/create#chat-cre
 If not overridden, &quot;message&quot; needs to be provided in the context.</p>
 <p><strong>Arguments</strong>:</p>
 <ul>
-<li><code>**context</code> - any context information, and &quot;message&quot; parameter needs to be provided.</li>
+<li><code>**context</code> - any context information, and &quot;message&quot; parameter needs to be provided.
+If message is not given, prompt for it via input()</li>
+</ul>
+<h4 class="anchor anchorWithStickyNavbar_LWe7" id="a_generate_init_message">a_generate_init_message<a href="#a_generate_init_message" class="hash-link" aria-label="Direct link to a_generate_init_message" title="Direct link to a_generate_init_message">​</a></h4>
+<div class="language-python codeBlockContainer_Ckt0 theme-code-block" style="--prism-color:#bfc7d5;--prism-background-color:#292d3e"><div class="codeBlockContent_biex"><pre tabindex="0" class="prism-code language-python codeBlock_bY9V thin-scrollbar" style="color:#bfc7d5;background-color:#292d3e"><code class="codeBlockLines_e6Vv"><span class="token-line" style="color:#bfc7d5"><span class="token keyword" style="font-style:italic">async</span><span class="token plain"> </span><span class="token keyword" style="font-style:italic">def</span><span class="token plain"> </span><span class="token function" style="color:rgb(130, 170, 255)">a_generate_init_message</span><span class="token punctuation" style="color:rgb(199, 146, 234)">(</span><span class="token operator" style="color:rgb(137, 221, 255)">**</span><span class="token plain">context</span><span class="token punctuation" style="color:rgb(199, 146, 234)">)</span><span class="token plain"> </span><span class="token operator" style="color:rgb(137, 221, 255)">-</span><span class="token operator" style="color:rgb(137, 221, 255)">&gt;</span><span class="token plain"> Union</span><span class="token punctuation" style="color:rgb(199, 146, 234)">[</span><span class="token builtin" style="color:rgb(130, 170, 255)">str</span><span class="token punctuation" style="color:rgb(199, 146, 234)">,</span><span class="token plain"> Dict</span><span class="token punctuation" style="color:rgb(199, 146, 234)">]</span><br></span></code></pre><div class="buttonGroup__atx"><button type="button" aria-label="Copy code to clipboard" title="Copy" class="clean-btn"><span class="copyButtonIcons_eSgA" aria-hidden="true"><svg viewBox="0 0 24 24" class="copyButtonIcon_y97N"><path fill="currentColor" d="M19,21H8V7H19M19,5H8A2,2 0 0,0 6,7V21A2,2 0 0,0 8,23H19A2,2 0 0,0 21,21V7A2,2 0 0,0 19,5M16,1H4A2,2 0 0,0 2,3V17H4V3H16V1Z"></path></svg><svg viewBox="0 0 24 24" class="copyButtonSuccessIcon_LjdS"><path fill="currentColor" d="M21,7L9,19L3.5,13.5L4.91,12.09L9,16.17L19.59,5.59L21,7Z"></path></svg></span></button></div></div></div>
+<p>Generate the initial message for the agent.</p>
+<p>Override this function to customize the initial message based on user&#x27;s request.
+If not overridden, &quot;message&quot; needs to be provided in the context.</p>
+<p><strong>Arguments</strong>:</p>
+<ul>
+<li><code>**context</code> - any context information, and &quot;message&quot; parameter needs to be provided.
+If message is not given, prompt for it via input()</li>
 </ul>
 <h4 class="anchor anchorWithStickyNavbar_LWe7" id="register_function">register_function<a href="#register_function" class="hash-link" aria-label="Direct link to register_function" title="Direct link to register_function">​</a></h4>
 <div class="language-python codeBlockContainer_Ckt0 theme-code-block" style="--prism-color:#bfc7d5;--prism-background-color:#292d3e"><div class="codeBlockContent_biex"><pre tabindex="0" class="prism-code language-python codeBlock_bY9V thin-scrollbar" style="color:#bfc7d5;background-color:#292d3e"><code class="codeBlockLines_e6Vv"><span class="token-line" style="color:#bfc7d5"><span class="token keyword" style="font-style:italic">def</span><span class="token plain"> </span><span class="token function" style="color:rgb(130, 170, 255)">register_function</span><span class="token punctuation" style="color:rgb(199, 146, 234)">(</span><span class="token plain">function_map</span><span class="token punctuation" style="color:rgb(199, 146, 234)">:</span><span class="token plain"> Dict</span><span class="token punctuation" style="color:rgb(199, 146, 234)">[</span><span class="token builtin" style="color:rgb(130, 170, 255)">str</span><span class="token punctuation" style="color:rgb(199, 146, 234)">,</span><span class="token plain"> Callable</span><span class="token punctuation" style="color:rgb(199, 146, 234)">]</span><span class="token punctuation" style="color:rgb(199, 146, 234)">)</span><br></span></code></pre><div class="buttonGroup__atx"><button type="button" aria-label="Copy code to clipboard" title="Copy" class="clean-btn"><span class="copyButtonIcons_eSgA" aria-hidden="true"><svg viewBox="0 0 24 24" class="copyButtonIcon_y97N"><path fill="currentColor" d="M19,21H8V7H19M19,5H8A2,2 0 0,0 6,7V21A2,2 0 0,0 8,23H19A2,2 0 0,0 21,21V7A2,2 0 0,0 19,5M16,1H4A2,2 0 0,0 2,3V17H4V3H16V1Z"></path></svg><svg viewBox="0 0 24 24" class="copyButtonSuccessIcon_LjdS"><path fill="currentColor" d="M21,7L9,19L3.5,13.5L4.91,12.09L9,16.17L19.59,5.59L21,7Z"></path></svg></span></button></div></div></div>
