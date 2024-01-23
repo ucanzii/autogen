@@ -12,7 +12,7 @@
 
 <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/katex@0.13.11/dist/katex.min.css" integrity="sha384-Um5gpz1odJg5Z4HAmzPtgZKdTBHZdw8S29IecapCSB31ligYPhHQZMIlWLYQGVoc" crossorigin="anonymous">
 <script src="/autogen/js/custom.js" async defer="defer"></script><link rel="stylesheet" href="/autogen/assets/css/styles.7acec159.css">
-<script src="/autogen/assets/js/runtime~main.906b30e5.js" defer="defer"></script>
+<script src="/autogen/assets/js/runtime~main.f2693f69.js" defer="defer"></script>
 <script src="/autogen/assets/js/main.3da6edb2.js" defer="defer"></script>
 </head>
 <body class="navigation-with-keyboard">
@@ -68,7 +68,7 @@ with the first image successfully pulled.
 If False, the code will be executed in the current environment.
 We strongly recommend using docker for code execution.</li>
 <li>timeout (Optional, int): The maximum execution time in seconds.</li>
-<li>last_n_messages (Experimental, Optional, int or str): The number of messages to look back for code execution. Default to 1. If set to &#x27;auto&#x27;, it will scan backwards through all messages arriving since the agent last spoke (typically this is the last time execution was attempted).</li>
+<li>last_n_messages (Experimental, Optional, int or str): The number of messages to look back for code execution. If set to &#x27;auto&#x27;, it will scan backwards through all messages arriving since the agent last spoke, which is typically the last time execution was attempted. (Default: auto)</li>
 </ul>
 </li>
 <li><code>llm_config</code> <em>dict or False</em> - llm inference configuration.
