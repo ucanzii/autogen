@@ -1,5 +1,13 @@
 from typing import List, Dict, Tuple
 from autogen import Agent
+from functools import partial
+
+
+def nested_chat_reply(inner_monologue_agent, **context):
+    def chat(inner_monologue_agent, recipient, messages, sender, config):
+        return True, recipient.initiate_chat(inner_monologue_agent, message=messages[0], **context)
+
+    return partial(chat, inner_monologue_agent)
 
 
 def gather_usage_summary(agents: List[Agent]) -> Tuple[Dict[str, any], Dict[str, any]]:
